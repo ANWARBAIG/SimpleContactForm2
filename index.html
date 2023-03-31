@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact-form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <form id="contact-form">
+        <label for="title">Title</label>
+        <select id="title" name="title" required>
+            <option value="">Select a title</option>
+            <option value="Mr">Mr</option>
+            <option value="Mrs">Mrs</option>
+            <option value="Ms">Ms</option>
+        </select>
+
+        <label for="first-name">First name</label>
+        <input id="first-name" name="first-name" type="text" required>
+
+        <label for="last-name">Last name</label>
+        <input id="last-name" name="last-name" type="text" required>
+
+        <label for="dob">Date of birth</label>
+        <input id="dob" name="dob" type="date" required>
+
+        <label for="phone">Telephone number</label>
+        <input id="phone" name="phone" type="tel" required>
+
+        <label for="file">File upload</label>
+        <input id="file" name="file" type="file" accept=".pdf,.jpg,.jpeg,.png" required>
+
+        <label for="email">Email address</label>
+        <input id="email" name="email" type="email" required>
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" maxlength="300" required></textarea>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        const form = document.getElementById('contact-form');
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const title = document.getElementById('title').value;
+            const firstName = document.getElementById('first-name').value;
+            const lastName = document.getElementById('last-name').value;
+            const dob = document.getElementById('dob').value;
+            const phone = document.getElementById('phone').value;
+            const file = document.getElementById('file').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            const submissionMessage = document.createElement('div');
+            submissionMessage.id = 'submission-message';
+            submissionMessage.textContent = `Thank you ${title} ${firstName} ${lastName}.\nYou have submitted the following details:\nDate of Birth: ${dob}\nTelephone: ${phone}\nFile Uploaded: ${file}\nMessage: ${message}`;
+
+            form.appendChild(submissionMessage);
+        });
+    </script>
+
+
+</body>
+
+</html>
